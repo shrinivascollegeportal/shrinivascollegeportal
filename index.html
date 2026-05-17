@@ -1,18 +1,168 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-  <title>Srinivas College Portal</title>
+  <title>ShrinivasCollegePortal</title>
+
+  <meta charset="UTF-8">
 
   <meta name="viewport"
   content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
 
+  <style>
+
+    .slider{
+      position:relative;
+      width:100%;
+      height:100vh;
+      overflow:hidden;
+    }
+
+    .slide{
+      position:absolute;
+      width:100%;
+      height:100%;
+      opacity:0;
+      transition:1s;
+    }
+
+    .slide.active{
+      opacity:1;
+      z-index:1;
+    }
+
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* OVERLAY */
+    .overlay{
+
+      position:absolute;
+
+      top:50%;
+      left:50%;
+
+      transform:
+      translate(-50%,-50%);
+
+      z-index:10;
+
+      background:
+      rgba(0,0,0,0.6);
+
+      padding:30px;
+
+      border-radius:15px;
+
+      text-align:center;
+
+      color:white;
+
+      width:90%;
+      max-width:500px;
+
+      box-sizing:border-box;
+
+    }
+
+    .overlay h1{
+      margin-bottom:10px;
+      font-size:35px;
+    }
+
+    .overlay p{
+      margin-bottom:20px;
+      font-size:18px;
+    }
+
+    /* BUTTONS */
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .buttons a{
+
+      text-decoration:none;
+
+      background:#0072ff;
+
+      color:white;
+
+      padding:12px 20px;
+
+      border-radius:8px;
+
+      font-weight:bold;
+
+      transition:0.3s;
+
+    }
+
+    .buttons a:hover{
+      background:#0055cc;
+    }
+
+    /* NOTICE */
+    .notice{
+      padding:40px 20px;
+      text-align:center;
+      background:white;
+    }
+
+    .notice h2{
+      color:#0072ff;
+      margin-bottom:20px;
+    }
+
+    .notice p{
+      margin:10px 0;
+      font-size:18px;
+    }
+
+    /* MOBILE */
+    @media screen and (max-width:768px){
+
+      .overlay{
+
+        padding:20px;
+
+      }
+
+      .overlay h1{
+        font-size:24px;
+      }
+
+      .overlay p{
+        font-size:15px;
+      }
+
+      .buttons{
+        flex-direction:column;
+      }
+
+      .buttons a{
+        width:100%;
+        box-sizing:border-box;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body>
 
+<!-- SLIDER -->
 <div class="slider">
 
   <div class="slide active">
@@ -37,7 +187,7 @@
   <div class="overlay">
 
     <h1>
-      Srinivas College Portal
+      Shrinivas College Portal
     </h1>
 
     <p>
