@@ -1,311 +1,319 @@
-body {
-  margin: 0;
-  font-family: Arial;
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f5f5f5;
 }
 
 /* HERO SECTION */
-.hero {
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') no-repeat center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.hero{
+  min-height:100vh;
+  background:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') no-repeat center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 
-/* OVERLAY */
-.overlay {
-  background: rgba(0,0,0,0.6);
-  padding: 40px;
-  text-align: center;
-  color: white;
-  border-radius: 10px;
+.overlay{
+  background:rgba(0,0,0,0.6);
+  padding:40px;
+  text-align:center;
+  color:white;
+  border-radius:15px;
+  width:90%;
+  max-width:500px;
 }
 
 /* BUTTONS */
-.buttons a {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 20px;
-  background: #0072ff;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
+.buttons{
+  margin-top:20px;
 }
 
-.buttons a:hover {
-  background: #0056cc;
+.buttons a{
+  display:inline-block;
+  margin:10px;
+  padding:12px 20px;
+  background:#0072ff;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
 }
+
+.buttons a:hover{
+  background:#0056cc;
+}
+
 /* SLIDER */
-.slider {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
+.slider{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
 }
 
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: 1s;
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:1s;
 }
 
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.slide.active {
-  opacity: 1;
-}
-.courses {
-  padding: 40px;
-  text-align: center;
+.slide.active{
+  opacity:1;
 }
 
-.course-box {
-  display: inline-block;
-  margin: 10px;
-  padding: 15px 20px;
-  background: #0072ff;
-  color: white;
-  border-radius: 6px;
-}
-.about {
-  background: #eee;
-  padding: 40px;
-  text-align: center;
-}
-.login-body {
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* COURSES */
+.courses{
+  padding:40px 20px;
+  text-align:center;
 }
 
-.login-box {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
+.course-box{
+  display:inline-block;
+  margin:10px;
+  padding:15px 20px;
+  background:#0072ff;
+  color:white;
+  border-radius:8px;
 }
 
-.login-box input {
-  display: block;
-  margin: 10px;
-  padding: 10px;
-  width: 250px;
+/* ABOUT */
+.about{
+  background:#eee;
+  padding:40px 20px;
+  text-align:center;
 }
 
-.login-box button {
-  padding: 10px;
-  width: 100%;
-  background: #0072ff;
-  color: white;
-  border: none;
+/* LOGIN */
+.login-body{
+  background:linear-gradient(to right,#00c6ff,#0072ff);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
 
-body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(to right, #e3f2fd, #ffffff);
+.login-box{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  width:100%;
+  max-width:350px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* TOP BAR */
-.topbar {
-  background: linear-gradient(to right, #004aad, #0072ff);
-  color: white;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
+.login-box input{
+  display:block;
+  margin:10px 0;
+  padding:12px;
+  width:100%;
+  border:1px solid #ccc;
+  border-radius:8px;
+  box-sizing:border-box;
 }
 
-.menu a {
-  color: white;
-  margin: 10px;
-  text-decoration: none;
-  font-weight: bold;
+.login-box button{
+  padding:12px;
+  width:100%;
+  background:#0072ff;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* TOPBAR */
+.topbar{
+  background:linear-gradient(to right,#004aad,#0072ff);
+  color:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.menu{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.menu a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
 }
 
 /* MAIN */
-.main {
-  display: flex;
-  padding: 20px;
-  gap: 20px;
+.main{
+  display:flex;
+  padding:20px;
+  gap:20px;
 }
 
 /* LEFT PANEL */
-.left {
-  width: 25%;
-  background: white;
-  text-align: center;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.left{
+  width:25%;
+  background:white;
+  text-align:center;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.left img {
-  width: 100px;
-  margin-bottom: 10px;
+.left img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:50%;
+  margin-bottom:10px;
 }
 
 /* BUTTON OPTIONS */
-.options {
-  margin-top: 15px;
+.options{
+  margin-top:15px;
 }
 
-.options button {
-  margin: 5px;
-  padding: 10px;
-  width: 90%;
-  background: #0072ff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.options button{
+  margin:5px 0;
+  padding:12px;
+  width:100%;
+  background:#0072ff;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
 }
 
 /* RIGHT SIDE */
-.right {
-  width: 75%;
-  text-align: center;
+.right{
+  width:75%;
+  text-align:center;
 }
 
-/* IMAGE */
-.banner img {
-  width: 90%;
-  margin-top: 20px;
-  border-radius: 12px;
-}
-body {
-  font-family: Arial;
-  background: #f5f5f5;
-  margin: 0;
+.banner img{
+  width:100%;
+  border-radius:12px;
 }
 
-/* TOP BAR */
-.topbar {
-  background: #0072ff;
-  padding: 10px;
-}
-
-.menu {
-  text-align: right;
-}
-
-.menu a {
-  color: white;
-  margin: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* MAIN */
-.container {
-  width: 80%;
-  margin: auto;
-  background: white;
-  padding: 20px;
+/* CONTAINER */
+.container{
+  width:90%;
+  max-width:1000px;
+  margin:20px auto;
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
 }
 
-.edit {
-  background: #4da6ff;
-  border: none;
-  padding: 8px 15px;
-  color: white;
-  border-radius: 5px;
+.edit{
+  background:#4da6ff;
+  border:none;
+  padding:10px 15px;
+  color:white;
+  border-radius:6px;
 }
 
 /* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
 
 /* TABLE */
-table {
-  width: 100%;
-  border-collapse: collapse;
+table{
+  width:100%;
+  border-collapse:collapse;
+  overflow-x:auto;
 }
 
-table th {
-  background: #0077b6;
-  color: white;
-  padding: 10px;
+table th{
+  background:#0077b6;
+  color:white;
+  padding:10px;
 }
 
-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-.container {
-  width: 80%;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  margin-top: 20px;
+table td{
+  border:1px solid #ccc;
+  padding:10px;
 }
 
-select, button {
-  padding: 10px;
-  font-size: 16px;
-}
-
-#resultBox {
-  margin-top: 20px;
-}
-
-@media screen and (max-width: 768px) {
-
-.container,
-.login-container,
-.form-container {
-    width: 90%;
-    padding: 20px;
-    margin: auto;
-    border-radius: 15px;
-}
-
-h1, h2 {
-    font-size: 24px;
-    text-align: center;
-}
-
-input,
+/* FORM */
+select,
 button,
-select {
-    width: 100%;
-    margin-top: 10px;
-    font-size: 16px;
-    padding: 12px;
-    border-radius: 8px;
+input{
+  font-size:16px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+#resultBox{
+  margin-top:20px;
 }
 
-body {
-    background-size: cover;
-    background-position: center;
+/* MOBILE RESPONSIVE */
+@media screen and (max-width:768px){
+
+.main{
+  flex-direction:column;
 }
 
-.dashboard,
-.card,
-.profile-box {
-    width: 95%;
-    margin: auto;
+.left,
+.right{
+  width:100%;
+}
+
+.grid{
+  grid-template-columns:1fr;
+}
+
+.topbar{
+  flex-direction:column;
+  text-align:center;
+}
+
+.menu{
+  justify-content:center;
+}
+
+.overlay{
+  padding:20px;
+}
+
+h1{
+  font-size:24px;
+}
+
+h2{
+  font-size:20px;
+}
+
+.buttons a{
+  width:90%;
+}
+
+table{
+  display:block;
+  overflow-x:auto;
 }
 
 }
