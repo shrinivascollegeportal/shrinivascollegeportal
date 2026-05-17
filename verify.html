@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certificate Verification</title>
+
+  <style>
+
+    body{
+      margin:0;
+      font-family:Arial;
+      height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      background:
+      linear-gradient(
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.5)),
+
+      url('https://images.unsplash.com/photo-1523240795612-9a054b0db644')
+
+      no-repeat center/cover;
+    }
+
+    .box{
+
+      background:rgba(255,255,255,0.1);
+
+      backdrop-filter:blur(10px);
+
+      padding:30px;
+
+      border-radius:10px;
+
+      text-align:center;
+
+      width:350px;
+
+      color:white;
+
+      box-shadow:0 2px 10px rgba(0,0,0,0.3);
+
+    }
+
+    h2{
+      margin-bottom:20px;
+    }
+
+    input{
+
+      width:90%;
+
+      padding:12px;
+
+      margin:10px 0;
+
+      border-radius:5px;
+
+      border:none;
+
+      outline:none;
+
+    }
+
+    button{
+
+      width:100%;
+
+      padding:12px;
+
+      background:#00c6ff;
+
+      color:white;
+
+      border:none;
+
+      border-radius:5px;
+
+      cursor:pointer;
+
+      font-size:16px;
+
+    }
+
+    button:hover{
+      background:#0072ff;
+    }
+
+    #downloadBtn{
+
+      display:none;
+
+      margin-top:15px;
+
+      padding:12px;
+
+      background:green;
+
+      color:white;
+
+      text-decoration:none;
+
+      border-radius:5px;
+
+      display:inline-block;
+
+    }
+
+    #result{
+
+      margin-top:15px;
+
+      font-size:18px;
+
+      font-weight:bold;
+
+    }
+
+    .info{
+
+      margin-top:15px;
+
+      text-align:left;
+
+      display:none;
+
+      background:rgba(255,255,255,0.1);
+
+      padding:15px;
+
+      border-radius:10px;
+
+    }
+
+    .info p{
+      margin:8px 0;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h2>
+    Certificate Verification
+  </h2>
+
+  <input
+  type="text"
+  id="enroll"
+  placeholder="Enter Enrollment Number">
+
+  <button onclick="check()">
+
+    Verify Certificate
+
+  </button>
+
+  <p id="result"></p>
+
+  <!-- STUDENT INFO -->
+  <div class="info" id="infoBox">
+
+    <p>
+      <b>Name:</b>
+      <span id="name"></span>
+    </p>
+
+    <p>
+      <b>Enrollment:</b>
+      <span id="enrollment"></span>
+    </p>
+
+    <p>
+      <b>Course:</b>
+      <span id="course"></span>
+    </p>
+
+  </div>
+
+  <!-- OPEN BUTTON -->
+  <a
+  id="downloadBtn"
+  target="_blank">
+
+    Open Certificate
+
+  </a>
+
+</div>
+
+<script>
+
+// 🔥 VERIFY FUNCTION
+function check(){
+
+  let id =
+  document.getElementById("enroll")
+  .value
+  .trim();
+
+  let result =
+  document.getElementById("result");
+
+  let downloadBtn =
+  document.getElementById("downloadBtn");
+
+  let infoBox =
+  document.getElementById("infoBox");
+
+  // 🔥 EMPTY CHECK
+  if(id === ""){
+
+    result.innerHTML =
+    "⚠️ Please enter enrollment number";
+
+    result.style.color = "yellow";
+
+    downloadBtn.style.display =
+    "none";
+
+    infoBox.style.display =
+    "none";
+
+    return;
+
+  }
+
+  // 🔥 GET STUDENTS
+  let students =
+  JSON.parse(localStorage.getItem("students"))
+  || [];
+
+  // 🔥 FIND STUDENT
+  let student =
+  students.find(s =>
+    s.enrollment === id
+  );
+
+  // 🔥 PDF PATH
+  let filePath =
+  "pdf/" +
+  id +
+  "_certificate.pdf";
+
+  // 🔥 CHECK PDF
+  fetch(filePath)
+
+  .then(res => {
+
+    // 🔥 BOTH VALID
+    if(res.ok && student){
+
+      result.innerHTML =
+      "✅ Certificate Verified";
+
+      result.style.color =
+      "lightgreen";
+
+      // 🔥 SHOW INFO
+      infoBox.style.display =
+      "block";
+
+      document.getElementById("name")
+      .innerText =
+      student.name || "N/A";
+
+      document.getElementById("enrollment")
+      .innerText =
+      student.enrollment || "N/A";
+
+      document.getElementById("course")
+      .innerText =
+      student.course || "N/A";
+
+      // 🔥 BUTTON
+      downloadBtn.style.display =
+      "inline-block";
+
+      downloadBtn.href =
+      filePath;
+
+    }
+
+    // 🔥 NOT FOUND
+    else{
+
+      result.innerHTML =
+      "❌ Certificate Not Found";
+
+      result.style.color =
+      "red";
+
+      downloadBtn.style.display =
+      "none";
+
+      infoBox.style.display =
+      "none";
+
+    }
+
+  })
+
+  .catch(() => {
+
+    result.innerHTML =
+    "❌ Certificate Not Found";
+
+    result.style.color =
+    "red";
+
+    downloadBtn.style.display =
+    "none";
+
+    infoBox.style.display =
+    "none";
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>

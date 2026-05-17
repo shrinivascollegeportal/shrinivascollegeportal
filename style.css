@@ -1,0 +1,266 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') no-repeat center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* OVERLAY */
+.overlay {
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+}
+
+/* BUTTONS */
+.buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 20px;
+  background: #0072ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.buttons a:hover {
+  background: #0056cc;
+}
+/* SLIDER */
+.slider {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 1s;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide.active {
+  opacity: 1;
+}
+.courses {
+  padding: 40px;
+  text-align: center;
+}
+
+.course-box {
+  display: inline-block;
+  margin: 10px;
+  padding: 15px 20px;
+  background: #0072ff;
+  color: white;
+  border-radius: 6px;
+}
+.about {
+  background: #eee;
+  padding: 40px;
+  text-align: center;
+}
+.login-body {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-box input {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  width: 250px;
+}
+
+.login-box button {
+  padding: 10px;
+  width: 100%;
+  background: #0072ff;
+  color: white;
+  border: none;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(to right, #e3f2fd, #ffffff);
+}
+
+/* TOP BAR */
+.topbar {
+  background: linear-gradient(to right, #004aad, #0072ff);
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* MAIN */
+.main {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* LEFT PANEL */
+.left {
+  width: 25%;
+  background: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.left img {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+/* BUTTON OPTIONS */
+.options {
+  margin-top: 15px;
+}
+
+.options button {
+  margin: 5px;
+  padding: 10px;
+  width: 90%;
+  background: #0072ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* RIGHT SIDE */
+.right {
+  width: 75%;
+  text-align: center;
+}
+
+/* IMAGE */
+.banner img {
+  width: 90%;
+  margin-top: 20px;
+  border-radius: 12px;
+}
+body {
+  font-family: Arial;
+  background: #f5f5f5;
+  margin: 0;
+}
+
+/* TOP BAR */
+.topbar {
+  background: #0072ff;
+  padding: 10px;
+}
+
+.menu {
+  text-align: right;
+}
+
+.menu a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* MAIN */
+.container {
+  width: 80%;
+  margin: auto;
+  background: white;
+  padding: 20px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit {
+  background: #4da6ff;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  border-radius: 5px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th {
+  background: #0077b6;
+  color: white;
+  padding: 10px;
+}
+
+table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.container {
+  width: 80%;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+select, button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+#resultBox {
+  margin-top: 20px;
+}

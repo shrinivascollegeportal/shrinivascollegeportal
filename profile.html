@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="menu">
+    <a href="#" onclick="goHome()">Home</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TITLE -->
+  <div class="header">
+    <h1>My Profile</h1>
+    <button class="edit">EDIT</button>
+  </div>
+
+  <!-- PERSONAL INFO -->
+  <h2>Personal Information</h2>
+  <hr>
+
+  <div class="grid">
+
+    <p><b>Name:</b> <span id="name"></span></p>
+    <p><b>Date Of Birth:</b> <span id="dob"></span></p>
+
+    <p><b>Father's Name:</b> <span id="father"></span></p>
+    <p><b>Caste:</b> <span id="caste"></span></p>
+
+    <p><b>Mother's Name:</b> <span id="mother"></span></p>
+    <p><b>Religion:</b> <span id="religion"></span></p>
+
+    <p><b>Gender:</b> <span id="gender"></span></p>
+    <p><b>Nationality:</b> <span id="nationality"></span></p>
+
+    <p><b>Blood Group:</b> <span id="blood"></span></p>
+
+  </div>
+
+  <!-- CONTACT -->
+  <h2>Contact Information</h2>
+  <hr>
+
+  <div class="grid">
+
+    <p><b>Address:</b> <span id="address"></span></p>
+    <p><b>Mobile:</b> <span id="mobile"></span></p>
+
+    <p><b>Email:</b> <span id="email"></span></p>
+    <p><b>State:</b> <span id="state"></span></p>
+
+    <p><b>City:</b> <span id="city"></span></p>
+
+  </div>
+
+  <!-- ACADEMIC -->
+  <h2>Academic Information</h2>
+  <hr>
+
+  <div class="grid">
+
+    <p><b>Institute:</b> <span id="institute"></span></p>
+    <p><b>Program:</b> <span id="course"></span></p>
+
+    <p><b>Branch:</b> <span id="branch"></span></p>
+    <p><b>Semester:</b> <span id="semester"></span></p>
+
+    <p><b>Batch:</b> <span id="batch"></span></p>
+    <p><b>Admission Date:</b> <span id="admission"></span></p>
+
+  </div>
+
+  <!-- QUALIFICATION -->
+  <h2>Qualification Information</h2>
+  <hr>
+
+  <table>
+
+    <tr>
+      <th>S.No</th>
+      <th>Qualification</th>
+      <th>School</th>
+      <th>Board</th>
+      <th>Year</th>
+      <th>Marks</th>
+    </tr>
+
+    <tr>
+      <td>1</td>
+
+      <td id="qualification"></td>
+
+      <td id="school"></td>
+
+      <td id="board"></td>
+
+      <td id="year"></td>
+
+      <td id="marks"></td>
+    </tr>
+
+  </table>
+
+</div>
+
+<script>
+
+// 🔥 GET STUDENT DATA
+let data =
+JSON.parse(localStorage.getItem("student"));
+
+// 🔥 CHECK LOGIN
+if(!data){
+
+  window.location.href = "login.html";
+
+}
+
+// 🔥 FILL DATA
+if(data){
+
+  // PERSONAL
+  document.getElementById("name").innerText =
+  data.name || "N/A";
+
+  document.getElementById("dob").innerText =
+  data.dob || "N/A";
+
+  document.getElementById("father").innerText =
+  data.father || "N/A";
+
+  document.getElementById("mother").innerText =
+  data.mother || "N/A";
+
+  document.getElementById("gender").innerText =
+  data.gender || "N/A";
+
+  document.getElementById("caste").innerText =
+  data.caste || "N/A";
+
+  document.getElementById("religion").innerText =
+  data.religion || "N/A";
+
+  document.getElementById("nationality").innerText =
+  data.nationality || "Indian";
+
+  document.getElementById("blood").innerText =
+  data.blood || "N/A";
+
+  // CONTACT
+  document.getElementById("address").innerText =
+  data.address || "N/A";
+
+  document.getElementById("mobile").innerText =
+  data.mobile || "N/A";
+
+  document.getElementById("email").innerText =
+  data.email || "N/A";
+
+  document.getElementById("state").innerText =
+  data.state || "N/A";
+
+  document.getElementById("city").innerText =
+  data.city || "N/A";
+
+  // ACADEMIC
+  document.getElementById("institute").innerText =
+  data.institute || "Srinivas University";
+
+  document.getElementById("course").innerText =
+  data.course || "N/A";
+
+  document.getElementById("branch").innerText =
+  data.branch || "N/A";
+
+  document.getElementById("semester").innerText =
+  data.semester || "N/A";
+
+  document.getElementById("batch").innerText =
+  data.batch || "N/A";
+
+  document.getElementById("admission").innerText =
+  data.admission || "N/A";
+
+  // QUALIFICATION
+  document.getElementById("qualification").innerText =
+  data.qualification || "N/A";
+
+  document.getElementById("school").innerText =
+  data.school || "N/A";
+
+  document.getElementById("board").innerText =
+  data.board || "N/A";
+
+  document.getElementById("year").innerText =
+  data.year || "N/A";
+
+  document.getElementById("marks").innerText =
+  data.marks || "N/A";
+
+}
+
+// 🔥 LOGOUT
+function logout(){
+
+  localStorage.removeItem("student");
+
+  window.location.href = "index.html";
+
+}
+
+// 🔥 GO HOME
+function goHome(){
+
+  window.location.href = "dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>

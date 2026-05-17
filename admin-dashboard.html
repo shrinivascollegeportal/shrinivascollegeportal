@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+
+  <style>
+
+    body{
+      margin:0;
+      font-family:Arial;
+      background:#f5f5f5;
+    }
+
+    /* TOPBAR */
+    .topbar{
+      background:#0072ff;
+      color:white;
+      padding:15px 30px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .topbar h2{
+      margin:0;
+    }
+
+    .logout-btn{
+      background:red;
+      color:white;
+      border:none;
+      padding:10px 15px;
+      border-radius:5px;
+      cursor:pointer;
+    }
+
+    /* MAIN */
+    .container{
+      padding:30px;
+    }
+
+    .title{
+      margin-bottom:30px;
+    }
+
+    /* CARDS */
+    .cards{
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit, minmax(220px,1fr));
+
+      gap:20px;
+    }
+
+    .card{
+      background:white;
+      padding:30px;
+      border-radius:10px;
+      text-align:center;
+
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .card h3{
+      margin-bottom:15px;
+    }
+
+    .card button{
+      padding:10px 20px;
+      border:none;
+      border-radius:5px;
+      background:#0072ff;
+      color:white;
+      cursor:pointer;
+    }
+
+    .card button:hover{
+      background:#0055cc;
+    }
+
+    /* POPUP */
+    .popup{
+
+      position:fixed;
+
+      top:0;
+      left:0;
+
+      width:100%;
+      height:100%;
+
+      background:
+      rgba(0,0,0,0.5);
+
+      display:none;
+
+      justify-content:center;
+      align-items:center;
+
+      overflow:auto;
+
+      padding:20px;
+
+    }
+
+    .popup-box{
+
+      background:white;
+
+      padding:30px;
+
+      width:350px;
+
+      border-radius:10px;
+
+      text-align:center;
+
+    }
+
+    .popup-box h2{
+      margin-bottom:20px;
+    }
+
+    .popup-box input,
+    .popup-box select{
+
+      width:90%;
+
+      padding:10px;
+
+      margin:10px 0;
+
+      border:1px solid #ccc;
+
+      border-radius:5px;
+
+    }
+
+    .popup-box button{
+
+      width:100%;
+
+      padding:10px;
+
+      border:none;
+
+      border-radius:5px;
+
+      cursor:pointer;
+
+      margin-top:10px;
+
+      color:white;
+
+    }
+
+    .save-btn{
+      background:#0072ff;
+    }
+
+    .close-btn{
+      background:red;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+
+  <h2>
+    Admin Dashboard
+  </h2>
+
+  <button
+  class="logout-btn"
+  onclick="logout()">
+
+    Logout
+
+  </button>
+
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <div class="title">
+
+    <h1>
+      Welcome Admin 👋
+    </h1>
+
+    <p>
+      Manage Students & PDFs
+    </p>
+
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+
+    <!-- ADD STUDENT -->
+    <div class="card">
+
+      <h3>Add Student</h3>
+
+      <button onclick="openAddStudent()">
+        Open
+      </button>
+
+    </div>
+
+    <!-- VIEW STUDENTS -->
+    <div class="card">
+
+      <h3>View Students</h3>
+
+      <button onclick="openStudents()">
+        Open
+      </button>
+
+    </div>
+
+    <!-- RESULT PDF -->
+    <div class="card">
+
+      <h3>Upload Result PDF</h3>
+
+      <button onclick="openResultPopup()">
+        Open
+      </button>
+
+    </div>
+
+    <!-- CERTIFICATE -->
+    <div class="card">
+
+      <h3>Upload Certificate</h3>
+
+      <button onclick="openCertificatePopup()">
+        Open
+      </button>
+
+    </div>
+
+    <!-- PHOTO -->
+    <div class="card">
+
+      <h3>Upload Student Photo</h3>
+
+      <button onclick="openPhotoPopup()">
+        Open
+      </button>
+
+    </div>
+
+    <!-- CHANGE ADMIN -->
+    <div class="card">
+
+      <h3>
+        Change Admin ID & Password
+      </h3>
+
+      <button onclick="openPopup()">
+        Open
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- CHANGE ADMIN POPUP -->
+<div class="popup" id="popup">
+
+  <div class="popup-box">
+
+    <h2>
+      Change Admin Login
+    </h2>
+
+    <input
+    type="text"
+    id="currentId"
+    placeholder="Current Admin ID">
+
+    <input
+    type="password"
+    id="currentPass"
+    placeholder="Current Password">
+
+    <input
+    type="text"
+    id="newId"
+    placeholder="New Admin ID">
+
+    <input
+    type="password"
+    id="newPass"
+    placeholder="New Password">
+
+    <input
+    type="password"
+    id="secretCode"
+    placeholder="Enter Secret Code">
+
+    <button
+    class="save-btn"
+    onclick="saveAdmin()">
+
+      Save Changes
+
+    </button>
+
+    <button
+    class="close-btn"
+    onclick="closePopup()">
+
+      Close
+
+    </button>
+
+  </div>
+
+</div>
+
+<!-- RESULT PDF POPUP -->
+<div class="popup" id="resultPopup">
+
+  <div class="popup-box">
+
+    <h2>
+      Upload Result PDF
+    </h2>
+
+    <input
+    type="text"
+    id="resultEnroll"
+    placeholder="Enrollment Number">
+
+    <select id="resultSem">
+
+      <option value="">
+        Select Semester
+      </option>
+
+      <option value="1">Semester 1</option>
+      <option value="2">Semester 2</option>
+      <option value="3">Semester 3</option>
+      <option value="4">Semester 4</option>
+      <option value="5">Semester 5</option>
+      <option value="6">Semester 6</option>
+      <option value="7">Semester 7</option>
+      <option value="8">Semester 8</option>
+      <option value="9">Semester 9</option>
+      <option value="10">Semester 10</option>
+      <option value="11">Semester 11</option>
+      <option value="12">Semester 12</option>
+
+    </select>
+
+    <input
+    type="file"
+    id="resultPdf">
+
+    <button
+    class="save-btn"
+    onclick="uploadResultPdf()">
+
+      Upload
+
+    </button>
+
+    <button
+    class="close-btn"
+    onclick="closeResultPopup()">
+
+      Close
+
+    </button>
+
+  </div>
+
+</div>
+
+<!-- CERTIFICATE POPUP -->
+<div class="popup" id="certificatePopup">
+
+  <div class="popup-box">
+
+    <h2>
+      Upload Certificate
+    </h2>
+
+    <input
+    type="text"
+    id="certificateEnroll"
+    placeholder="Enrollment Number">
+
+    <input
+    type="file"
+    id="certificatePdf">
+
+    <button
+    class="save-btn"
+    onclick="uploadCertificatePdf()">
+
+      Upload
+
+    </button>
+
+    <button
+    class="close-btn"
+    onclick="closeCertificatePopup()">
+
+      Close
+
+    </button>
+
+  </div>
+
+</div>
+
+<!-- PHOTO POPUP -->
+<div class="popup" id="photoPopup">
+
+  <div class="popup-box">
+
+    <h2>
+      Upload Student Photo
+    </h2>
+
+    <input
+    type="text"
+    id="photoEnroll"
+    placeholder="Enrollment Number">
+
+    <input
+    type="file"
+    id="studentPhoto">
+
+    <button
+    class="save-btn"
+    onclick="uploadPhoto()">
+
+      Upload
+
+    </button>
+
+    <button
+    class="close-btn"
+    onclick="closePhotoPopup()">
+
+      Close
+
+    </button>
+
+  </div>
+
+</div>
+
+<script>
+
+// 🔥 SECRET CODE
+const SECRET_CODE =
+"M@2827803686036063444922A";
+
+// 🔥 SECURITY CHECK
+if(localStorage.getItem("admin") !== "true"){
+
+  window.location.href =
+  "admin-login.html";
+
+}
+
+// 🔥 LOGOUT
+function logout(){
+
+  localStorage.removeItem("admin");
+
+  window.location.href =
+  "admin-login.html";
+
+}
+
+// 🔥 ADD STUDENT
+function openAddStudent(){
+
+  window.location.href =
+  "add-student.html";
+
+}
+
+// 🔥 VIEW STUDENTS
+function openStudents(){
+
+  window.location.href =
+  "view-students.html";
+
+}
+
+// 🔥 CHANGE ADMIN POPUP
+function openPopup(){
+
+  document.getElementById("popup")
+  .style.display = "flex";
+
+}
+
+function closePopup(){
+
+  document.getElementById("popup")
+  .style.display = "none";
+
+}
+
+// 🔥 SAVE ADMIN
+function saveAdmin(){
+
+  let currentId =
+  document.getElementById("currentId").value;
+
+  let currentPass =
+  document.getElementById("currentPass").value;
+
+  let newId =
+  document.getElementById("newId").value;
+
+  let newPass =
+  document.getElementById("newPass").value;
+
+  let secret =
+  document.getElementById("secretCode").value;
+
+  if(
+    currentId === "" ||
+    currentPass === "" ||
+    newId === "" ||
+    newPass === "" ||
+    secret === ""
+  ){
+
+    alert("Please fill all fields");
+
+    return;
+
+  }
+
+  let adminData =
+  JSON.parse(
+    localStorage.getItem("adminData")
+  );
+
+  if(
+    currentId !== adminData.id ||
+    currentPass !== adminData.password
+  ){
+
+    alert(
+    "Wrong Current ID or Password"
+    );
+
+    return;
+
+  }
+
+  if(secret !== SECRET_CODE){
+
+    alert(
+    "Wrong Secret Code"
+    );
+
+    return;
+
+  }
+
+  let newAdmin = {
+
+    id:newId,
+
+    password:newPass
+
+  };
+
+  localStorage.setItem(
+    "adminData",
+    JSON.stringify(newAdmin)
+  );
+
+  alert(
+  "Admin Login Changed Successfully 🔥"
+  );
+
+  closePopup();
+
+}
+
+// 🔥 RESULT POPUP
+function openResultPopup(){
+
+  document.getElementById("resultPopup")
+  .style.display = "flex";
+
+}
+
+function closeResultPopup(){
+
+  document.getElementById("resultPopup")
+  .style.display = "none";
+
+}
+
+// 🔥 CERTIFICATE POPUP
+function openCertificatePopup(){
+
+  document.getElementById("certificatePopup")
+  .style.display = "flex";
+
+}
+
+function closeCertificatePopup(){
+
+  document.getElementById("certificatePopup")
+  .style.display = "none";
+
+}
+
+// 🔥 PHOTO POPUP
+function openPhotoPopup(){
+
+  document.getElementById("photoPopup")
+  .style.display = "flex";
+
+}
+
+function closePhotoPopup(){
+
+  document.getElementById("photoPopup")
+  .style.display = "none";
+
+}
+
+// 🔥 RESULT PDF UPLOAD
+async function uploadResultPdf(){
+
+  let enrollment =
+  document.getElementById("resultEnroll")
+  .value;
+
+  let semester =
+  document.getElementById("resultSem")
+  .value;
+
+  let file =
+  document.getElementById("resultPdf")
+  .files[0];
+
+  if(
+    enrollment === "" ||
+    semester === "" ||
+    !file
+  ){
+
+    alert("Please fill all fields");
+
+    return;
+
+  }
+
+  let formData = new FormData();
+
+  formData.append(
+    "enrollment",
+    enrollment
+  );
+
+  formData.append(
+    "semester",
+    semester
+  );
+
+  formData.append(
+    "type",
+    "result"
+  );
+
+  formData.append(
+    "pdf",
+    file
+  );
+
+  let res = await fetch(
+
+    "/upload-pdf",
+
+    {
+
+      method:"POST",
+
+      body:formData
+
+    }
+
+  );
+
+  let text = await res.text();
+
+  alert(text);
+
+}
+
+// 🔥 CERTIFICATE PDF UPLOAD
+async function uploadCertificatePdf(){
+
+  let enrollment =
+  document.getElementById("certificateEnroll")
+  .value;
+
+  let file =
+  document.getElementById("certificatePdf")
+  .files[0];
+
+  if(
+    enrollment === "" ||
+    !file
+  ){
+
+    alert("Please fill all fields");
+
+    return;
+
+  }
+
+  let formData = new FormData();
+
+  formData.append(
+    "enrollment",
+    enrollment
+  );
+
+  formData.append(
+    "type",
+    "certificate"
+  );
+
+  formData.append(
+    "pdf",
+    file
+  );
+
+  let res = await fetch(
+
+    "/upload-pdf",
+
+    {
+
+      method:"POST",
+
+      body:formData
+
+    }
+
+  );
+
+  let text = await res.text();
+
+  alert(text);
+
+}
+
+// 🔥 PHOTO UPLOAD
+async function uploadPhoto(){
+
+  let enrollment =
+  document.getElementById("photoEnroll")
+  .value;
+
+  let file =
+  document.getElementById("studentPhoto")
+  .files[0];
+
+  if(
+    enrollment === "" ||
+    !file
+  ){
+
+    alert("Please fill all fields");
+
+    return;
+
+  }
+
+  let formData = new FormData();
+
+  formData.append(
+    "enrollment",
+    enrollment
+  );
+
+  formData.append(
+    "photo",
+    file
+  );
+
+  let res = await fetch(
+
+    "/upload-photo",
+
+    {
+
+      method:"POST",
+
+      body:formData
+
+    }
+
+  );
+
+  let text = await res.text();
+
+  alert(text);
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+
+  <h2>Srinivas College Portal</h2>
+
+  <div class="menu">
+    <a href="#" onclick="goHome()">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="#">Change Password</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </div>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- LEFT -->
+  <div class="left">
+
+    <!-- PHOTO -->
+    <img
+    id="photo"
+    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+    style="
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid #0072ff;
+      margin-bottom:15px;
+    ">
+
+    <!-- NAME -->
+    <h3 id="name">Student Name</h3>
+
+    <!-- ENROLLMENT -->
+    <p id="enroll">Enrollment</p>
+
+    <!-- COURSE -->
+    <p>
+      Course:
+      <span id="course"></span>
+    </p>
+
+    <!-- SEM -->
+    <p>
+      Semester:
+      <span id="sem"></span>
+    </p>
+
+    <!-- BUTTONS -->
+    <div class="options">
+
+      <button onclick="goResult()">
+        Semester Result
+      </button>
+
+      <button>
+        Attendance Status
+      </button>
+
+      <button>
+        Internal Marks
+      </button>
+
+      <button>
+        Academic Calendar
+      </button>
+
+      <button>
+        Back Registration
+      </button>
+
+      <button>
+        Back Result
+      </button>
+
+      <button>
+        Time Table
+      </button>
+
+      <button>
+        Latest Updates
+      </button>
+
+      <button>
+        Feedback
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+
+    <h2 id="welcome">
+      Welcome Student 👋
+    </h2>
+
+    <!-- BANNER -->
+    <div class="banner">
+
+      <img
+      src="https://images.unsplash.com/photo-1523240795612-9a054b0db644"
+      style="
+        width:100%;
+        border-radius:10px;
+      ">
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+// 🔥 GET LOGIN STUDENT
+let student =
+JSON.parse(localStorage.getItem("student"));
+
+// 🔥 CHECK LOGIN
+if(!student){
+
+  window.location.href =
+  "login.html";
+
+}
+
+// 🔥 SET DATA
+if(student){
+
+  // NAME
+  document.getElementById("name").innerText =
+  student.name || "N/A";
+
+  // ENROLLMENT
+  document.getElementById("enroll").innerText =
+  "Enrollment: " +
+  (student.enrollment || "N/A");
+
+  // COURSE
+  document.getElementById("course").innerText =
+  student.course || "N/A";
+
+  // SEMESTER
+  document.getElementById("sem").innerText =
+  student.semester || "N/A";
+
+  // WELCOME
+  document.getElementById("welcome").innerText =
+  "Welcome " +
+  (student.name || "Student") +
+  " 👋";
+
+  // 🔥 PHOTO FIX
+  if(student.photo &&
+     student.photo !== "photos/"){
+
+    document.getElementById("photo").src =
+    student.photo;
+
+  }
+  else{
+
+    document.getElementById("photo").src =
+    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+
+  }
+
+}
+
+// 🔥 LOGOUT
+function logout(){
+
+  localStorage.removeItem("student");
+
+  window.location.href =
+  "index.html";
+
+}
+
+// 🔥 RESULT PAGE
+function goResult(){
+
+  window.location.href =
+  "result.html";
+
+}
+
+// 🔥 HOME
+function goHome(){
+
+  window.location.href =
+  "dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Semester Result</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+
+  <div class="menu">
+
+    <a href="#" onclick="goHome()">
+      Home
+    </a>
+
+    <a href="profile.html">
+      Profile
+    </a>
+
+    <a href="#" onclick="logout()">
+      Logout
+    </a>
+
+  </div>
+
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <h2>
+    Semester Result
+  </h2>
+
+  <!-- STUDENT INFO -->
+  <div style="
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  ">
+
+    <p>
+      <b>Name:</b>
+      <span id="studentName"></span>
+    </p>
+
+    <p>
+      <b>Enrollment:</b>
+      <span id="studentEnrollment"></span>
+    </p>
+
+    <p>
+      <b>Course:</b>
+      <span id="studentCourse"></span>
+    </p>
+
+  </div>
+
+  <!-- SELECT -->
+  <select id="sem">
+
+    <option value="">
+      Select Semester
+    </option>
+
+    <option value="1">Semester 1</option>
+    <option value="2">Semester 2</option>
+    <option value="3">Semester 3</option>
+    <option value="4">Semester 4</option>
+    <option value="5">Semester 5</option>
+    <option value="6">Semester 6</option>
+    <option value="7">Semester 7</option>
+    <option value="8">Semester 8</option>
+    <option value="9">Semester 9</option>
+    <option value="10">Semester 10</option>
+    <option value="11">Semester 11</option>
+    <option value="12">Semester 12</option>
+
+  </select>
+
+  <br><br>
+
+  <!-- BUTTON -->
+  <button onclick="showResult()">
+
+    View Marksheet
+
+  </button>
+
+</div>
+
+<script>
+
+// 🔥 GET LOGIN STUDENT
+let student =
+JSON.parse(localStorage.getItem("student"));
+
+// 🔥 CHECK LOGIN
+if(!student){
+
+  alert("Session Expired");
+
+  window.location.href =
+  "login.html";
+
+}
+
+// 🔥 SHOW STUDENT INFO
+if(student){
+
+  document.getElementById(
+    "studentName"
+  ).innerText =
+  student.name || "N/A";
+
+  document.getElementById(
+    "studentEnrollment"
+  ).innerText =
+  student.enrollment || "N/A";
+
+  document.getElementById(
+    "studentCourse"
+  ).innerText =
+  student.course || "N/A";
+
+}
+
+// 🔥 RESULT FUNCTION
+function showResult(){
+
+  let sem =
+  document.getElementById("sem").value;
+
+  // 🔥 EMPTY CHECK
+  if(sem === ""){
+
+    alert("Please Select Semester");
+
+    return;
+
+  }
+
+  // 🔥 FILE PATH
+  let filePath =
+
+  "pdf/" +
+
+  student.enrollment +
+
+  "_sem" +
+
+  sem +
+
+  ".pdf";
+
+  // 🔥 OPEN PDF
+  window.open(
+    filePath,
+    "_blank"
+  );
+
+}
+
+// 🔥 LOGOUT
+function logout(){
+
+  localStorage.removeItem("student");
+
+  window.location.href =
+  "index.html";
+
+}
+
+// 🔥 HOME
+function goHome(){
+
+  window.location.href =
+  "dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>

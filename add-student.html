@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Student</title>
+
+  <style>
+
+    body{
+      margin:0;
+      font-family:Arial;
+      background:#f5f5f5;
+    }
+
+    .topbar{
+      background:#0072ff;
+      color:white;
+      padding:15px 30px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .topbar h2{
+      margin:0;
+    }
+
+    .back-btn{
+      background:white;
+      color:#0072ff;
+      border:none;
+      padding:10px 15px;
+      border-radius:5px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .container{
+      width:500px;
+      margin:40px auto;
+      background:white;
+      padding:30px;
+      border-radius:10px;
+
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .container h2{
+      text-align:center;
+      margin-bottom:20px;
+    }
+
+    h3{
+      margin-top:25px;
+      color:#0072ff;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin:10px 0;
+
+      border:1px solid #ccc;
+      border-radius:5px;
+
+      box-sizing:border-box;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      margin-top:20px;
+
+      background:#0072ff;
+      color:white;
+
+      border:none;
+      border-radius:5px;
+
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    button:hover{
+      background:#0055cc;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+
+  <h2 id="pageTitle">
+    Add Student
+  </h2>
+
+  <button
+  class="back-btn"
+  onclick="goBack()">
+
+    Back
+
+  </button>
+
+</div>
+
+<div class="container">
+
+  <h2 id="formTitle">
+    Student Details
+  </h2>
+
+  <!-- PERSONAL -->
+  <h3>Personal Information</h3>
+
+  <input type="text" id="name" placeholder="Student Name">
+
+  <input type="text" id="father" placeholder="Father Name">
+
+  <input type="text" id="mother" placeholder="Mother Name">
+
+  <input type="text" id="dob" placeholder="Date Of Birth">
+
+  <input type="text" id="gender" placeholder="Gender">
+
+  <input type="text" id="caste" placeholder="Caste">
+
+  <input type="text" id="religion" placeholder="Religion">
+
+  <input type="text" id="blood" placeholder="Blood Group">
+
+  <!-- LOGIN -->
+  <h3>Login Information</h3>
+
+  <input type="text" id="enrollment" placeholder="Enrollment Number">
+
+  <input type="password" id="password" placeholder="Password">
+
+  <!-- CONTACT -->
+  <h3>Contact Information</h3>
+
+  <input type="text" id="mobile" placeholder="Mobile Number">
+
+  <input type="text" id="address" placeholder="Address">
+
+  <input type="text" id="email" placeholder="Email">
+
+  <input type="text" id="state" placeholder="State">
+
+  <input type="text" id="city" placeholder="City">
+
+  <!-- ACADEMIC -->
+  <h3>Academic Information</h3>
+
+  <input type="text" id="course" placeholder="Course">
+
+  <input type="text" id="branch" placeholder="Branch">
+
+  <input type="text" id="semester" placeholder="Semester">
+
+  <input type="text" id="batch" placeholder="Batch">
+
+  <input type="text" id="admission" placeholder="Admission Date">
+
+  <!-- QUALIFICATION -->
+  <h3>Qualification Information</h3>
+
+  <input type="text" id="qualification" placeholder="Qualification">
+
+  <input type="text" id="school" placeholder="School Name">
+
+  <input type="text" id="board" placeholder="Board">
+
+  <input type="text" id="year" placeholder="Passing Year">
+
+  <input type="text" id="marks" placeholder="Marks">
+
+  <button
+  id="saveBtn"
+  onclick="addStudent()">
+
+    Add Student
+
+  </button>
+
+</div>
+
+<script>
+
+// 🔥 SECURITY
+if(localStorage.getItem("admin") !== "true"){
+
+  window.location.href =
+  "admin-login.html";
+
+}
+
+// 🔥 OLD DATA
+let students =
+
+JSON.parse(
+  localStorage.getItem("students")
+)
+
+|| [];
+
+// 🔥 EDIT MODE
+let editIndex =
+
+localStorage.getItem(
+  "editStudentIndex"
+);
+
+// 🔥 EDIT LOAD
+if(editIndex !== null){
+
+  let student =
+  students[editIndex];
+
+  document.getElementById(
+    "pageTitle"
+  ).innerText =
+  "Edit Student";
+
+  document.getElementById(
+    "formTitle"
+  ).innerText =
+  "Update Student Details";
+
+  document.getElementById(
+    "saveBtn"
+  ).innerText =
+  "Save Changes";
+
+  // PERSONAL
+  document.getElementById("name").value =
+  student.name || "";
+
+  document.getElementById("father").value =
+  student.father || "";
+
+  document.getElementById("mother").value =
+  student.mother || "";
+
+  document.getElementById("dob").value =
+  student.dob || "";
+
+  document.getElementById("gender").value =
+  student.gender || "";
+
+  document.getElementById("caste").value =
+  student.caste || "";
+
+  document.getElementById("religion").value =
+  student.religion || "";
+
+  document.getElementById("blood").value =
+  student.blood || "";
+
+  // LOGIN
+  document.getElementById("enrollment").value =
+  student.enrollment || "";
+
+  document.getElementById("password").value =
+  student.password || "";
+
+  // CONTACT
+  document.getElementById("mobile").value =
+  student.mobile || "";
+
+  document.getElementById("address").value =
+  student.address || "";
+
+  document.getElementById("email").value =
+  student.email || "";
+
+  document.getElementById("state").value =
+  student.state || "";
+
+  document.getElementById("city").value =
+  student.city || "";
+
+  // ACADEMIC
+  document.getElementById("course").value =
+  student.course || "";
+
+  document.getElementById("branch").value =
+  student.branch || "";
+
+  document.getElementById("semester").value =
+  student.semester || "";
+
+  document.getElementById("batch").value =
+  student.batch || "";
+
+  document.getElementById("admission").value =
+  student.admission || "";
+
+  // QUALIFICATION
+  document.getElementById("qualification").value =
+  student.qualification || "";
+
+  document.getElementById("school").value =
+  student.school || "";
+
+  document.getElementById("board").value =
+  student.board || "";
+
+  document.getElementById("year").value =
+  student.year || "";
+
+  document.getElementById("marks").value =
+  student.marks || "";
+
+}
+
+// 🔥 SAVE
+function addStudent(){
+
+  let enrollment =
+
+  document.getElementById(
+    "enrollment"
+  ).value;
+
+  let student = {
+
+    // PERSONAL
+    name:
+    document.getElementById("name").value,
+
+    father:
+    document.getElementById("father").value,
+
+    mother:
+    document.getElementById("mother").value,
+
+    dob:
+    document.getElementById("dob").value,
+
+    gender:
+    document.getElementById("gender").value,
+
+    caste:
+    document.getElementById("caste").value,
+
+    religion:
+    document.getElementById("religion").value,
+
+    blood:
+    document.getElementById("blood").value,
+
+    // 🔥 AUTO PHOTO
+    photo:
+    "photos/" +
+    enrollment +
+    ".jpg",
+
+    // LOGIN
+    enrollment:
+    enrollment,
+
+    password:
+    document.getElementById("password").value,
+
+    // CONTACT
+    mobile:
+    document.getElementById("mobile").value,
+
+    address:
+    document.getElementById("address").value,
+
+    email:
+    document.getElementById("email").value,
+
+    state:
+    document.getElementById("state").value,
+
+    city:
+    document.getElementById("city").value,
+
+    // ACADEMIC
+    course:
+    document.getElementById("course").value,
+
+    branch:
+    document.getElementById("branch").value,
+
+    semester:
+    document.getElementById("semester").value,
+
+    batch:
+    document.getElementById("batch").value,
+
+    admission:
+    document.getElementById("admission").value,
+
+    // QUALIFICATION
+    qualification:
+    document.getElementById("qualification").value,
+
+    school:
+    document.getElementById("school").value,
+
+    board:
+    document.getElementById("board").value,
+
+    year:
+    document.getElementById("year").value,
+
+    marks:
+    document.getElementById("marks").value
+
+  };
+
+  // REQUIRED
+  if(
+
+    student.name === "" ||
+
+    student.enrollment === "" ||
+
+    student.password === ""
+
+  ){
+
+    alert(
+      "Please fill required fields"
+    );
+
+    return;
+
+  }
+
+  // 🔥 EDIT
+  if(editIndex !== null){
+
+    students[editIndex] =
+    student;
+
+    localStorage.setItem(
+
+      "students",
+
+      JSON.stringify(students)
+
+    );
+
+    localStorage.removeItem(
+      "editStudentIndex"
+    );
+
+    alert(
+      "Student Updated Successfully 🔥"
+    );
+
+  }
+
+  // 🔥 NEW
+  else{
+
+    students.push(student);
+
+    localStorage.setItem(
+
+      "students",
+
+      JSON.stringify(students)
+
+    );
+
+    alert(
+      "Student Added Successfully 🔥"
+    );
+
+  }
+
+  window.location.href =
+  "view-students.html";
+
+}
+
+// 🔥 BACK
+function goBack(){
+
+  localStorage.removeItem(
+    "editStudentIndex"
+  );
+
+  window.location.href =
+  "admin-dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>
