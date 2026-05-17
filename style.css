@@ -264,3 +264,48 @@ select, button {
 #resultBox {
   margin-top: 20px;
 }
+
+@media screen and (max-width: 768px) {
+
+.container,
+.login-container,
+.form-container {
+    width: 90%;
+    padding: 20px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+h1, h2 {
+    font-size: 24px;
+    text-align: center;
+}
+
+input,
+button,
+select {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    background-size: cover;
+    background-position: center;
+}
+
+.dashboard,
+.card,
+.profile-box {
+    width: 95%;
+    margin: auto;
+}
+
+}
