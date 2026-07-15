@@ -1,124 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Student Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+<title>Student Login</title>
 
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-      url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') no-repeat center/cover;
-    }
+<style>
 
-    .login-box {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-      width: 320px;
-      color: white;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-    .login-box h2 {
-      margin-bottom: 20px;
-    }
+body{
 
-    input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-    }
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #00c6ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url("images/campus1.png");
 
-    button:hover {
-      background: #0072ff;
-    }
-  </style>
+background-size:cover;
+background-position:center center;
+background-repeat:no-repeat;
+
+padding:20px;
+
+}
+
+.login-box{
+
+width:100%;
+max-width:360px;
+
+padding:35px;
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(12px);
+
+border-radius:15px;
+
+text-align:center;
+
+color:#fff;
+
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.login-box h2{
+
+margin-bottom:25px;
+
+font-size:30px;
+
+}
+
+input{
+
+width:100%;
+
+padding:12px;
+
+margin:12px 0;
+
+border:none;
+
+border-radius:8px;
+
+outline:none;
+
+font-size:16px;
+
+}
+
+button{
+
+width:100%;
+
+padding:13px;
+
+margin-top:10px;
+
+background:#0072ff;
+
+color:#fff;
+
+border:none;
+
+border-radius:8px;
+
+font-size:17px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#0056cc;
+
+}
+
+@media(max-width:768px){
+
+.login-box{
+
+max-width:330px;
+
+padding:25px;
+
+}
+
+.login-box h2{
+
+font-size:24px;
+
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <div class="login-box">
 
-  <h2>Srinivas College Portal</h2>
+<h2>Srinivas College Portal</h2>
 
-  <input type="text"
-  id="enrollment"
-  placeholder="Enrollment Number">
+<input
+type="text"
+id="enrollment"
+placeholder="Enrollment Number">
 
-  <input type="password"
-  id="password"
-  placeholder="Password">
+<input
+type="password"
+id="password"
+placeholder="Password">
 
-  <button onclick="login()">
-    Login
-  </button>
+<button onclick="login()">
+Login
+</button>
 
 </div>
 
 <script>
 
-// 🔥 LOGIN FUNCTION
 function login(){
 
-  let enrollment =
-  document.getElementById("enrollment").value;
+let enrollment=document.getElementById("enrollment").value;
+let password=document.getElementById("password").value;
 
-  let password =
-  document.getElementById("password").value;
+let students=
+JSON.parse(localStorage.getItem("students")) || [];
 
-  // 🔥 GET STUDENTS
-  let students =
-  JSON.parse(localStorage.getItem("students")) || [];
+let student=students.find(s=>
 
-  // 🔥 FIND STUDENT
-  let student = students.find(s =>
+s.enrollment===enrollment &&
+s.password===password
 
-    s.enrollment === enrollment &&
-    s.password === password
+);
 
-  );
+if(student){
 
-  // 🔥 LOGIN SUCCESS
-  if(student){
+localStorage.setItem(
+"student",
+JSON.stringify(student)
+);
 
-    // save current student
-    localStorage.setItem(
-      "student",
-      JSON.stringify(student)
-    );
+window.location.href="dashboard.html";
 
-    // open dashboard
-    window.location.href =
-    "dashboard.html";
+}
 
-  }
+else{
 
-  // 🔥 LOGIN FAILED
-  else{
+alert("Wrong Enrollment or Password ❌");
 
-    alert("Wrong Enrollment or Password ❌");
-
-  }
+}
 
 }
 
