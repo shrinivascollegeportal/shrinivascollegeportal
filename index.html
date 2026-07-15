@@ -4,93 +4,273 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShrinivasCollegePortal</title>
+
 <link rel="stylesheet" href="style.css">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-.slider{position:relative;height:50vh;overflow:hidden}
-.slide{position:absolute;inset:0;opacity:0;transition:1s}
-.slide.active{opacity:1}
-.slide img{width:100%;height:100%;object-fit:cover}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+.slider{
+position:relative;
+width:100%;
+height:50vh;
+overflow:hidden;
+}
+
+.slide{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+opacity:0;
+transition:1s;
+}
+
+.slide.active{
+opacity:1;
+}
+
+.slide img{
+width:100%;
+height:100%;
+object-fit:cover;
+object-position:center;
+display:block;
+}
+
 .overlay{
- position:absolute;inset:0;
- display:flex;flex-direction:column;
- justify-content:center;align-items:center;
- text-align:center;
- background:rgba(0,0,0,.35);
- color:#fff;padding:20px
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.35);
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+color:white;
+
+padding:20px;
+z-index:100;
 }
-.overlay h1{font-size:clamp(28px,5vw,48px)}
-.overlay p{margin:12px 0 24px}
-.buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+.overlay h1{
+font-size:clamp(30px,5vw,50px);
+margin-bottom:10px;
+}
+
+.overlay p{
+margin-bottom:20px;
+font-size:18px;
+}
+
+.buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
 .buttons a{
- text-decoration:none;color:#fff;
- background:#0072ff;padding:12px 22px;
- border-radius:8px;font-weight:bold
+
+background:#0072ff;
+color:white;
+padding:12px 24px;
+text-decoration:none;
+border-radius:8px;
+font-weight:bold;
+
 }
-section{padding:40px 20px}
-.notice{background:#fff}
-.notice h2,.courses h2,.about h2{text-align:center;color:#0056cc;margin-bottom:20px}
+
+.buttons a:hover{
+background:#0055cc;
+}
+
+section{
+padding:45px 20px;
+}
+
+.notice h2,
+.courses h2,
+.about h2{
+text-align:center;
+color:#0056cc;
+margin-bottom:20px;
+}
+
 .notice-card{
- max-width:900px;margin:auto;background:#f4f8ff;
- border-left:5px solid #0072ff;padding:18px;border-radius:10px
+
+max-width:900px;
+margin:auto;
+
+background:#eef5ff;
+
+padding:20px;
+
+border-left:5px solid #0072ff;
+
+border-radius:10px;
+
 }
+
 .course-grid{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
- gap:15px;max-width:1000px;margin:auto
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(180px,1fr));
+
+gap:15px;
+
+max-width:1000px;
+
+margin:auto;
+
 }
+
 .course{
- background:#0072ff;color:#fff;padding:18px;
- border-radius:10px;text-align:center
+
+background:#0072ff;
+
+color:white;
+
+padding:18px;
+
+border-radius:10px;
+
+text-align:center;
+
 }
-.about p{max-width:900px;margin:auto;text-align:center;line-height:1.7}
+
+.about p{
+
+max-width:900px;
+
+margin:auto;
+
+text-align:center;
+
+line-height:1.8;
+
+}
+
 footer{
- background:#0d47a1;color:#fff;text-align:center;
- padding:20px
+
+background:#0d47a1;
+
+color:white;
+
+text-align:center;
+
+padding:20px;
+
 }
+
 @media(max-width:768px){
- .slider{height:50vh}
- .buttons{flex-direction:column;width:100%;max-width:320px}
- .buttons a{width:100%}
+
+.slider{
+height:50vh;
 }
+
+.overlay h1{
+font-size:28px;
+}
+
+.overlay p{
+font-size:16px;
+}
+
+.buttons{
+
+flex-direction:column;
+
+width:100%;
+
+max-width:320px;
+
+}
+
+.buttons a{
+
+width:100%;
+
+}
+
+}
+
 </style>
+
 </head>
+
 <body>
-  
+
+<div class="slider">
+
 <div class="slide active">
-    <img src="images/campus1.png" alt="Campus 1">
+<img src="images/campus1.png" alt="Campus 1">
 </div>
 
 <div class="slide">
-    <img src="images/campus2.png" alt="Campus 2">
+<img src="images/campus2.png" alt="Campus 2">
 </div>
 
 <div class="slide">
-    <img src="images/campus3.png" alt="Campus 3">
+<img src="images/campus3.png" alt="Campus 3">
 </div>
 
- <div class="overlay">
-   <h1>Shrinivas College Portal</h1>
-   <p>Build Your Future With Us</p>
-   <div class="buttons">
-      <a href="login.html">Student Login</a>
-      <a href="#">Admission</a>
-      <a href="verify.html">Certificate Verification</a>
-   </div>
- </div>
+<div class="overlay">
+
+<h1>Shrinivas College Portal</h1>
+
+<p>Build Your Future With Us</p>
+
+<div class="buttons">
+
+<a href="login.html">Student Login</a>
+
+<a href="#">Admission</a>
+
+<a href="verify.html">Certificate Verification</a>
+
+</div>
+
+</div>
+
 </div>
 
 <section class="notice">
+
 <h2>Notice Board</h2>
+
 <div class="notice-card">
+
 <p>📌 Exam starts from 10 June</p>
+
 <p>📌 Admission Open 2026</p>
+
 <p>📌 Holiday on Sunday</p>
+
 </div>
+
 </section>
 
 <section class="courses">
+
 <h2>Our Courses</h2>
+
 <div class="course-grid">
+
 <div class="course">Engineering</div>
 <div class="course">Management</div>
 <div class="course">Pharmacy</div>
@@ -99,34 +279,64 @@ footer{
 <div class="course">Computer Applications</div>
 <div class="course">Applied Sciences</div>
 <div class="course">Arts</div>
+
 </div>
+
 </section>
 
 <section class="about">
+
 <h2>About Us</h2>
-<p>Shrinivas College Portal provides quality education with modern facilities. Our mission is to build skilled and successful students for the future.</p>
+
+<p>
+
+Shrinivas College Portal provides quality education with modern facilities.
+
+Our mission is to build skilled and successful students for the future.
+
+</p>
+
 </section>
 
 <footer>
+
 © 2026 Shrinivas College Portal
+
 </footer>
 
 <script>
-const slides=document.querySelectorAll('.slide');
-let i=0;
+
+const slides=document.querySelectorAll(".slide");
+
+let current=0;
+
 setInterval(()=>{
- slides[i].classList.remove('active');
- i=(i+1)%slides.length;
- slides[i].classList.add('active');
+
+slides[current].classList.remove("active");
+
+current=(current+1)%slides.length;
+
+slides[current].classList.add("active");
+
 },3000);
 
-// Hidden admin: 5 clicks on footer
-let c=0;
-document.querySelector('footer').addEventListener('click',()=>{
- c++;
- if(c>=5){ window.location.href='admin-login.html';}
- setTimeout(()=>c=0,1200);
-});
+let click=0;
+
+document.querySelector("footer").onclick=()=>{
+
+click++;
+
+if(click>=5){
+
+window.location.href="admin-login.html";
+
+}
+
+setTimeout(()=>click=0,1200);
+
+};
+
 </script>
+
 </body>
 </html>
