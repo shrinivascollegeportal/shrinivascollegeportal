@@ -1,296 +1,127 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-  <title>ShrinivasCollegePortal</title>
-
-  <meta charset="UTF-8">
-
-  <meta name="viewport"
-  content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-
-    .slider{
-      position:relative;
-      width:100%;
-      height:100vh;
-      overflow:hidden;
-    }
-
-    .slide{
-      position:absolute;
-      width:100%;
-      height:100%;
-      opacity:0;
-      transition:1s;
-    }
-
-    .slide.active{
-      opacity:1;
-      z-index:1;
-    }
-
-    .slide img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    /* OVERLAY */
-    .overlay{
-
-      position:absolute;
-
-      top:50%;
-      left:50%;
-
-      transform:
-      translate(-50%,-50%);
-
-      z-index:10;
-
-      background:
-      rgba(0,0,0,0.6);
-
-      padding:30px;
-
-      border-radius:15px;
-
-      text-align:center;
-
-      color:white;
-
-      width:90%;
-      max-width:500px;
-
-      box-sizing:border-box;
-
-    }
-
-    .overlay h1{
-      margin-bottom:10px;
-      font-size:35px;
-    }
-
-    .overlay p{
-      margin-bottom:20px;
-      font-size:18px;
-    }
-
-    /* BUTTONS */
-    .buttons{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:10px;
-    }
-
-    .buttons a{
-
-      text-decoration:none;
-
-      background:#0072ff;
-
-      color:white;
-
-      padding:12px 20px;
-
-      border-radius:8px;
-
-      font-weight:bold;
-
-      transition:0.3s;
-
-    }
-
-    .buttons a:hover{
-      background:#0055cc;
-    }
-
-    /* NOTICE */
-    .notice{
-      padding:40px 20px;
-      text-align:center;
-      background:white;
-    }
-
-    .notice h2{
-      color:#0072ff;
-      margin-bottom:20px;
-    }
-
-    .notice p{
-      margin:10px 0;
-      font-size:18px;
-    }
-
-    /* MOBILE */
-    @media screen and (max-width:768px){
-
-      .overlay{
-
-        padding:20px;
-
-      }
-
-      .overlay h1{
-        font-size:24px;
-      }
-
-      .overlay p{
-        font-size:15px;
-      }
-
-      .buttons{
-        flex-direction:column;
-      }
-
-      .buttons a{
-        width:100%;
-        box-sizing:border-box;
-      }
-
-    }
-
-  </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShrinivasCollegePortal</title>
+<link rel="stylesheet" href="style.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+.slider{position:relative;height:50vh;overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:1s}
+.slide.active{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover}
+.overlay{
+ position:absolute;inset:0;
+ display:flex;flex-direction:column;
+ justify-content:center;align-items:center;
+ text-align:center;
+ background:rgba(0,0,0,.35);
+ color:#fff;padding:20px
+}
+.overlay h1{font-size:clamp(28px,5vw,48px)}
+.overlay p{margin:12px 0 24px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.buttons a{
+ text-decoration:none;color:#fff;
+ background:#0072ff;padding:12px 22px;
+ border-radius:8px;font-weight:bold
+}
+section{padding:40px 20px}
+.notice{background:#fff}
+.notice h2,.courses h2,.about h2{text-align:center;color:#0056cc;margin-bottom:20px}
+.notice-card{
+ max-width:900px;margin:auto;background:#f4f8ff;
+ border-left:5px solid #0072ff;padding:18px;border-radius:10px
+}
+.course-grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ gap:15px;max-width:1000px;margin:auto
+}
+.course{
+ background:#0072ff;color:#fff;padding:18px;
+ border-radius:10px;text-align:center
+}
+.about p{max-width:900px;margin:auto;text-align:center;line-height:1.7}
+footer{
+ background:#0d47a1;color:#fff;text-align:center;
+ padding:20px
+}
+@media(max-width:768px){
+ .slider{height:50vh}
+ .buttons{flex-direction:column;width:100%;max-width:320px}
+ .buttons a{width:100%}
+}
+</style>
 </head>
-
 <body>
 
-<!-- SLIDER -->
 <div class="slider">
+ <img src="https://images.unsplash.com/photo-1562774053-701939374585">
 
-  <div class="slide active">
+<img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f">
 
-    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644">
+<img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1">
 
-  </div>
-
-  <div class="slide">
-
-    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
-
-  </div>
-
-  <div class="slide">
-
-    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
-
-  </div>
-
-  <!-- OVERLAY -->
-  <div class="overlay">
-
-    <h1>
-      Shrinivas College Portal
-    </h1>
-
-    <p>
-      Build Your Future With Us
-    </p>
-
-    <div class="buttons">
-
-      <a href="login.html">
-        Student Login
-      </a>
-
-      <a href="#">
-        Admission
-      </a>
-
-      <a href="verify.html">
-        Certificate Verification
-      </a>
-
-    </div>
-
-  </div>
-
+ <div class="overlay">
+   <h1>Shrinivas College Portal</h1>
+   <p>Build Your Future With Us</p>
+   <div class="buttons">
+      <a href="login.html">Student Login</a>
+      <a href="#">Admission</a>
+      <a href="verify.html">Certificate Verification</a>
+   </div>
+ </div>
 </div>
 
-<!-- NOTICE -->
 <section class="notice">
-
-  <h2>
-    Notice Board
-  </h2>
-
-  <p>
-    📌 Exam starts from 10 June
-  </p>
-
-  <p>
-    📌 Admission Open 2026
-  </p>
-
-  <p>
-    📌 Holiday on Sunday
-  </p>
-
+<h2>Notice Board</h2>
+<div class="notice-card">
+<p>📌 Exam starts from 10 June</p>
+<p>📌 Admission Open 2026</p>
+<p>📌 Holiday on Sunday</p>
+</div>
 </section>
 
-<!-- COURSES -->
 <section class="courses">
-
-  <h2>
-    Our Courses
-  </h2>
-
-  <div class="course-box">
-    Engineering
-  </div>
-
-  <div class="course-box">
-    Management
-  </div>
-
-  <div class="course-box">
-    Pharmacy
-  </div>
-
-  <div class="course-box">
-    Law
-  </div>
-
-  <div class="course-box">
-    Paramedical Sciences
-  </div>
-
-  <div class="course-box">
-    Computer Applications
-  </div>
-
-  <div class="course-box">
-    Applied Sciences
-  </div>
-
-  <div class="course-box">
-    Arts
-  </div>
-
+<h2>Our Courses</h2>
+<div class="course-grid">
+<div class="course">Engineering</div>
+<div class="course">Management</div>
+<div class="course">Pharmacy</div>
+<div class="course">Law</div>
+<div class="course">Paramedical Sciences</div>
+<div class="course">Computer Applications</div>
+<div class="course">Applied Sciences</div>
+<div class="course">Arts</div>
+</div>
 </section>
 
-<!-- ABOUT -->
 <section class="about">
-
-  <h2>
-    About Us
-  </h2>
-
-  <p>
-    Srinivas College Portal provides quality education with modern facilities.
-    Our mission is to build skilled and successful students for the future.
-  </p>
-
+<h2>About Us</h2>
+<p>Shrinivas College Portal provides quality education with modern facilities. Our mission is to build skilled and successful students for the future.</p>
 </section>
 
-<script src="script.js"></script>
+<footer>
+© 2026 Shrinivas College Portal
+</footer>
 
+<script>
+const slides=document.querySelectorAll('.slide');
+let i=0;
+setInterval(()=>{
+ slides[i].classList.remove('active');
+ i=(i+1)%slides.length;
+ slides[i].classList.add('active');
+},3000);
+
+// Hidden admin: 5 clicks on footer
+let c=0;
+document.querySelector('footer').addEventListener('click',()=>{
+ c++;
+ if(c>=5){ window.location.href='admin-login.html';}
+ setTimeout(()=>c=0,1200);
+});
+</script>
 </body>
 </html>
